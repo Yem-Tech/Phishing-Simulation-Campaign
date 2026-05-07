@@ -155,10 +155,8 @@ This project demonstrates understanding of how phishing attacks operate technica
 
 ## Author
 
-**Cybersecurity Analyst | Loram Maintenance of Way**
-Certifications: CCNA | Microsoft Azure | AWS | CompTIA Security+ | Python
-Education: Post-Graduate Diploma in Business Analytics | Diploma in French
-Currently pursuing: Advanced Cybersecurity specialisation
+**Cybersecurity Analyst | HypertechAi**
+Certifications: CCNA | Microsoft Azure | AWS | CompTIA Security+ | Python | Cybersecurity
 
 ---
 
