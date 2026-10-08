@@ -1,164 +1,150 @@
-# Phishing Simulation Campaign
-### User Awareness and Education Assessment
+# Local Phishing Simulation Lab
+## Credential Submission Demonstration and Awareness Lessons
 
-> **Confidentiality Notice:** This project documents an authorised phishing simulation conducted strictly for awareness, education, and security control improvement purposes. All exercises were performed in a controlled lab environment. No real users, systems, or credentials were targeted or compromised.
+> **Platform:** Kali Linux and Zphisher 2.3.5  
+> **Observed page:** `http://127.0.0.1:8080/login.html`  
+> **Purpose:** Educational demonstration using test input  
+> **Evidence:** Local replica login page, terminal submission output, and saved-file inspection
 
----
+## Overview
 
-## Campaign Overview
+This project demonstrates how a replica login page can collect submitted values in a local lab. The screenshots show a PayPal-branded replica accessed through a loopback address, submission output in a terminal, and values stored in a local file.
 
-| Field | Details |
+This was a technical demonstration, not a measured organizational awareness campaign. No participant roster, delivered phishing messages, tracking dashboard, training attendance, or before-and-after measurements are shown. Click rates, submission rates, and reporting rates are therefore not claimed as results.
+
+The original project notes state that the exercise was authorized and used fictitious credentials. Screenshots support the local demonstration but cannot independently establish authorization or whether an account string belongs to a real person. All submitted account and password values are redacted from portfolio images.
+
+## Objectives
+
+- Observe the difference between a page's visual branding and its actual origin.
+- Demonstrate that submitted test values can appear in terminal output and local storage.
+- Explain confidentiality risks associated with entering credentials on an untrusted page.
+- Identify awareness lessons and defensive controls.
+- Document evidence accurately without publishing submitted values or claiming unmeasured outcomes.
+
+## Scope and boundaries
+
+| Item | Documented scope |
 |---|---|
-| **Campaign Type** | Internal phishing simulation for user awareness and education |
-| **Simulation Platform** | Zphisher (authorised internal lab use only) |
-| **Environment** | Isolated local environment (localhost 127.0.0.1) |
-| **Measured KPIs** | Click rate, credential submission rate, reported rate |
-| **Prepared By** | Cybersecurity Analyst in Training |
-| **Purpose** | Academic lab exercise — Security Awareness Education |
+| Device environment | Kali Linux lab |
+| Framework version | Zphisher 2.3.5, visible in the startup screenshot |
+| Page access | Loopback URL `127.0.0.1:8080` |
+| Replica branding | PayPal-style login template; not the legitimate PayPal service |
+| Submission evidence | Two account/password pairs visible in the original output, now redacted |
+| Local file | `auth/usernames.dat`, shown during file inspection |
+| Participants | No real-user campaign evidenced |
+| Distribution | No public link, email delivery, or external campaign distribution evidenced |
 
----
+A loopback URL indicates local access; it does not prove that the whole environment was isolated or that every server listener was restricted to loopback. Network configuration and listener-binding evidence were not supplied.
 
-## 1. Executive Summary
+## Documented workflow
 
-This project presents a controlled phishing simulation conducted to assess user susceptibility to phishing attempts and to demonstrate the effectiveness of security awareness education. The simulation was executed in an authorised, isolated lab environment and evaluated user behaviour against key indicators of phishing resilience.
+### 1. Local preparation
 
-The primary purpose of the exercise was to establish a behavioural baseline, demonstrate how phishing attacks operate from a technical perspective, and reinforce why end-user awareness is a critical layer of any organisation's security posture. The project focuses on three core KPIs: click rate, credential submission rate, and reporting rate.
+The screenshots show creation of a simulation directory, retrieval of the tool source, and inspection of the framework files. The clone output places the repository in the home directory rather than demonstrating that all files were contained within the simulation directory.
 
-> This lab exercise is aligned with the **CIA Triad** — specifically addressing **Confidentiality** risks introduced by social engineering, and how **Availability** and **Integrity** of systems can be compromised when users fall victim to phishing attacks.
+Setup screenshots are optional and are not required to understand the result. This README does not provide a deployment guide or public hosting instructions.
 
----
+### 2. Replica login page
 
-## 2. Objectives
+A PayPal-style page was displayed at `http://127.0.0.1:8080/login.html`. Its visual branding resembles a legitimate service, while the address identifies a local page.
 
-- Demonstrate how phishing simulation tools operate in a controlled lab environment
-- Understand the technical mechanics behind credential harvesting phishing pages
-- Assess the importance of user awareness training in reducing phishing susceptibility
-- Identify how organisations can measure and improve phishing resilience through KPI tracking
-- Develop documentation skills aligned with professional cybersecurity reporting standards
+![Local replica login page with unrelated tabs redacted](Screenshots/01-local-replica-page-redacted.png)
 
----
+**Lesson:** Recognizable branding does not establish legitimacy. Check the actual site origin before entering information. HTTPS alone would also not establish that a site is trustworthy.
 
-## 3. Scope and Approach
+### 3. Test-value submission
 
-The simulation covered a controlled phishing exercise designed entirely for internal awareness testing within an isolated lab environment. A pre-awareness phishing exercise was conducted to establish a baseline, followed by awareness and education activities. A post-awareness review was then used to measure understanding of behavioural change against the same KPI categories.
+The terminal output shows two account/password submissions and a save location. A loopback client address, `127.0.0.1`, appears in the output.
 
-> **Ethical and Governance Note:** This simulation was conducted with full academic authorisation, within a defined lab scope, and with clear rules of engagement. This documentation intentionally describes the exercise at a high level and does not include technical details that would enable misuse outside an authorised context.
+![Terminal submission output with account and password values redacted](Screenshots/02-submission-output-redacted.png)
 
----
+**Observation:** Values entered into the replica page appeared in the tool output. This demonstrates collection of test input; it does not demonstrate compromise of a real account.
 
-## 4. Methodology
+### 4. Local storage inspection
 
-**Step 1 — Environment Setup:**
-A dedicated simulation directory was created within an isolated Kali Linux lab environment to contain all project files and tooling.
+The file-inspection screenshot shows the contents of `usernames.dat` containing two recorded entries. The original image displays readable account and password values. Those values are concealed in the portfolio copy.
 
-**Step 2 — Tool Deployment:**
-An open-source phishing simulation framework was cloned and configured within the controlled environment for educational demonstration purposes.
+![Saved-file inspection with submitted entries redacted](Screenshots/03-local-storage-redacted.png)
 
-**Step 3 — Simulated Page Generation:**
-A replica login page was generated on localhost to demonstrate how phishing pages mimic legitimate services to deceive users.
+**Lesson:** Screenshots, logs, and saved output can expose submitted information. They require careful handling even in an educational exercise.
 
-**Step 4 — Baseline Measurement:**
-Dummy test credentials were submitted to the simulated page to observe how credential harvesting operates technically, using entirely fictitious data.
+## Evidence-based results
 
-**Step 5 — Awareness Intervention:**
-Findings were reviewed and mapped to user awareness training content covering phishing identification, safe response behaviour, and internal reporting procedures.
+| Observation | Supported conclusion | What it does not establish |
+|---|---|---|
+| Replica page displayed at loopback URL | A local branded login demonstration was accessed | Public deployment or message delivery |
+| Submission values appeared in terminal output | The demonstration collected test input | Successful login to a legitimate service |
+| Two entries appeared in local storage | Submitted data was retained locally | Two unique participants or a campaign submission rate |
+| No campaign analytics supplied | Behavioural metrics cannot be calculated | Awareness improvement or reduction in organizational risk |
 
-**Step 6 — Comparative Analysis:**
-Before-and-after KPI values were reviewed conceptually to determine how awareness programmes improve organisational resilience.
+No participant susceptibility baseline, delivered awareness intervention, or post-training behaviour change is evidenced. Two submissions are not a percentage without a defined population and campaign denominator.
 
----
+## Awareness lessons
 
-## 5. KPI Definitions
+- A copied logo and familiar layout can appear on an unrelated page.
+- Check the destination and context of a login request before entering information.
+- Use a trusted bookmark or known service address when a message unexpectedly requests sign-in.
+- Report suspicious requests through the organization's established channel.
+- Submitting a password can expose it, but account access also depends on validity, MFA, and other controls.
+- Avoid reusing passwords; compromise of one password may affect other accounts when reuse occurs.
 
-| KPI | Definition |
-|---|---|
-| **Click Rate** | The percentage of targeted users who clicked the phishing link or interacted with the simulated malicious prompt |
-| **Credential Submission Rate** | The percentage of targeted users who entered credentials or sensitive information into the simulated phishing page |
-| **Reported Rate** | The percentage of targeted users who identified the message as suspicious and reported it through the approved reporting channel |
+These are lessons derived from the mechanism demonstrated. They are not measured training outcomes.
 
----
+## Future awareness-campaign measurement plan
 
-## 6. KPI Comparison
+The following metrics are proposed for a future approved campaign, not measured in this lab:
 
-| KPI | Before Awareness | After Awareness | Change | Interpretation |
-|---|---|---|---|---|
-| Click Rate | High | Reduced | ↓ Decrease | Lower values indicate improved user caution |
-| Credential Submission Rate | High | Reduced | ↓ Decrease | Lower values indicate reduced compromise likelihood |
-| Reported Rate | Low | Increased | ↑ Increase | Higher values indicate stronger security awareness and escalation behaviour |
+| KPI | Proposed definition | This lab's result |
+|---|---|---|
+| Click rate | Unique recipients clicking the simulation link / successfully delivered recipients × 100 | Not measured |
+| Submission rate | Unique recipients submitting designated simulation input / successfully delivered recipients × 100 | Not measured |
+| Reporting rate | Unique recipients reporting the simulation / successfully delivered recipients × 100 | Not measured |
 
-> In a real organisational deployment, these values would be populated with precise percentage measurements from the campaign analytics dashboard.
+Campaign measurement should define the time window, deduplication rules, exclusions, and denominator before testing. Automated link inspection can affect click telemetry and must be considered. Before-and-after comparisons require comparable groups, delivery conditions, and lure difficulty.
 
----
+A future awareness exercise should avoid collecting real passwords. Use a designated simulation action or synthetic input and record only the minimum data needed for the learning objective.
 
-## 7. Analysis of Results
+## Defensive recommendations
 
-Lower click and credential submission rates typically indicate improved user caution, message scrutiny, and understanding of phishing indicators. A higher reporting rate indicates that users are not only identifying suspicious content but are also following the organisation's escalation procedure correctly.
+1. Provide practical training on verifying destinations and responding to unexpected sign-in requests.
+2. Make reporting simple and reinforce reporting without blame.
+3. Use email and web filtering alongside awareness training.
+4. Use MFA, prioritizing phishing-resistant authentication where supported.
+5. Review access controls and suspicious sign-in monitoring to reduce the impact of exposed credentials.
+6. Keep test output out of public repositories, and remove it after the authorized retention period.
 
-**Baseline risk indicator:**
-Prior to awareness intervention, simulated users demonstrated high susceptibility — clicking links and submitting credentials without verifying the legitimacy of the page or sender.
+These recommendations were not implemented or tested by the supplied screenshots. This lab does not demonstrate that any specific control was bypassed.
 
-**Post-awareness improvement:**
-Following awareness content delivery, simulated users demonstrated improved ability to identify phishing indicators including suspicious URLs, mismatched branding, and unsolicited credential requests.
+## Privacy and screenshot checklist
 
-**Residual concern:**
-Even after awareness training, a subset of users may remain susceptible — particularly to highly convincing spear-phishing lures that closely mimic trusted internal communications.
+Create a **`Screenshots`** folder beside `README.md` and upload only these prepared images:
 
-**Operational implication:**
-Results demonstrate that technical controls alone are insufficient. Human behaviour remains a critical attack surface. Continuous awareness training, clear reporting procedures, and periodic simulation are essential components of a mature security awareness programme.
+| Portfolio filename | Original source | Redaction |
+|---|---|---|
+| `01-local-replica-page-redacted.png` | `6-dummy_page(1).png` | Unrelated browser tabs concealed; local URL retained |
+| `02-submission-output-redacted.png` | `7-auth_login_details(1).png` | Account and password values concealed |
+| `03-local-storage-redacted.png` | `8-cat-usernames_dat_(1).png` | Account and password values in both stored entries concealed |
 
----
+The originals and duplicate “Copy” images are not needed in the public repository. The tool-menu and cloning screenshots add little evidence of the outcome and are omitted from the main presentation. Loopback addresses and generic Kali prompts are retained because they explain the lab context.
 
-## 8. Key Findings
+Do not upload raw `auth/` output, credential files, real account information, or browser-session data. Redacted images are privacy-edited evidence copies, not evidence of additional technical results.
 
-- **Finding 1:** Phishing pages can convincingly replicate legitimate login portals, making visual inspection alone an unreliable defence mechanism for untrained users.
-- **Finding 2:** Credential submission behaviour represents the highest risk outcome — once credentials are harvested, attackers gain unauthorised access without any further technical exploit.
-- **Finding 3:** User reporting behaviour is typically the weakest KPI prior to awareness intervention, highlighting the need for clear, practised escalation procedures.
-- **Finding 4:** Awareness and education activities demonstrably improve user resilience when content is relevant, timely, and reinforced through repeated simulation cycles.
+## Limitations
 
----
+- Evidence is limited to screenshots and the supplied project notes.
+- Loopback access is shown, but complete network isolation is not verified.
+- No organizational user campaign, message-delivery record, or participant consent record was supplied.
+- No measured KPIs, pre/post training comparison, or awareness-effectiveness evaluation is available.
+- No real account compromise, MFA bypass, session theft, or security-control effectiveness was demonstrated.
+- No exact exercise date is assigned because it is not established by the supplied evidence.
 
-## 9. Recommendations
+## Skills demonstrated
 
-- Continue periodic phishing simulations to reinforce awareness and measure long-term behavioural trends
-- Provide targeted retraining for users or departments with higher click or credential submission rates
-- Improve internal reporting visibility by making the reporting process simple, visible, and routinely practised
-- Align phishing awareness content with common lures relevant to the organisation's business context
-- Track KPI trends over time and report them to management as part of the broader security awareness programme
-- Implement supplementary technical controls including email filtering, warning banners, MFA enforcement, and conditional access policies
+Local lab observation, phishing-mechanism analysis, evidence documentation, privacy-aware reporting, awareness-content planning, and KPI-definition design.
 
----
+## Author and assessment context
 
-## 10. Conclusion
+**Olayemi Owoeye — Cybersecurity Portfolio**
 
-This phishing simulation lab exercise provides measurable insight into user phishing resilience and the effectiveness of awareness interventions. When supported by management authorisation, repeated assessment cycles, and clear reporting procedures, phishing simulations significantly improve organisational readiness against social engineering threats.
-
-This project demonstrates understanding of how phishing attacks operate technically, why they remain one of the most effective attack vectors against organisations, and how cybersecurity professionals design and execute awareness programmes to measurably reduce human risk.
-
----
-
-## Tools & Environment
-
-| Component | Details |
-|---|---|
-| **Operating System** | Kali Linux |
-| **Simulation Framework** | Zphisher v2.3.5 |
-| **Environment Type** | Isolated localhost lab (127.0.0.1) |
-| **Purpose** | Authorised educational simulation only |
-
----
-
-## Ethical Disclaimer
-
-> This project was conducted exclusively within an authorised academic lab environment. All targets were dummy accounts with fictitious credentials. No real users, real credentials, or live systems were involved at any stage. The techniques documented here are presented for educational purposes to help cybersecurity professionals understand attack vectors and design effective defences. Unauthorised use of phishing tools against real users or systems is illegal and unethical.
-
----
-
-## Author
-
-**Cybersecurity Analyst | HypertechAi**
-Certifications: CCNA | Microsoft Azure | AWS | CompTIA Security+ | Python | Cybersecurity
-
----
-
-*This report was prepared following professional cybersecurity reporting standards for academic portfolio purposes.*
-
+The project notes describe authorized educational use with fictitious test credentials. This documentation focuses on the local demonstration and defensive lessons. It does not claim a completed organizational phishing campaign or measured improvement in user behaviour. Product branding in the replica does not imply affiliation with or endorsement by the legitimate service.
